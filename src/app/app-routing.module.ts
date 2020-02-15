@@ -14,25 +14,34 @@ import { PageNotFoundComponent } from './components/pages/page-not-found/page-no
 import { BlankComponent } from './components/pages/blank/blank.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { TablesComponent } from './components/tables/tables.component';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 
 
 const routes: Routes = [
-  { path:'dashboard', component: DashboardComponent },
-  { path:'buttons', component: ButtonsComponent },
-  { path:'cards', component: CardsComponent },
-  { path:'colors', component: ColorsComponent },
-  { path:'borders', component: BordersComponent },
-  { path:'animations', component: AnimationsComponent },
-  { path:'other', component: OtherComponent },
   { path:'login', component: LoginComponent },
   { path:'register', component: RegisterComponent },
   { path:'forgotpassword', component: ForgotPasswordComponent },
+  { path: '',  pathMatch: 'full', redirectTo: 'login' },
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      { path:'dashboard', component: DashboardComponent },
+      { path:'buttons', component: ButtonsComponent },
+      { path:'cards', component: CardsComponent },
+      { path:'colors', component: ColorsComponent },
+      { path:'borders', component: BordersComponent },
+      { path:'animations', component: AnimationsComponent },
+      { path:'other', component: OtherComponent },
+      { path:'blank', component: BlankComponent },
+      { path:'charts', component: ChartsComponent },
+      { path:'tables', component: TablesComponent },
+      { path: '',  pathMatch: 'full', redirectTo: 'dashboard' }
+    ]
+  },
   { path:'pagenotfound', component: PageNotFoundComponent },
-  { path:'blank', component: BlankComponent },
-  { path:'charts', component: ChartsComponent },
-  { path:'tables', component: TablesComponent },
-  { path: '',  pathMatch: 'full', redirectTo: 'dashboard' },
   { path: '**',  pathMatch: 'full', redirectTo: 'pagenotfound' }
+
 ];
 
 @NgModule({

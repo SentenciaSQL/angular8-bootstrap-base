@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { PageNotFoundComponent } from './components/pages/page-not-found/page-no
 import { BlankComponent } from './components/pages/blank/blank.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { TablesComponent } from './components/tables/tables.component';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +40,13 @@ import { TablesComponent } from './components/tables/tables.component';
     PageNotFoundComponent,
     BlankComponent,
     ChartsComponent,
-    TablesComponent
+    TablesComponent,
+    AdminLayoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
