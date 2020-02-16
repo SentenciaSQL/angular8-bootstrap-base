@@ -1,1 +1,115 @@
-<p>register works!</p>
+<div class="container">
+
+  <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+              <form (ngSubmit)="register(f)" #f="ngForm" class="user" novalidate>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input
+                          name="firstName"
+                          type="text"
+                          class="form-control form-control-user"
+                          placeholder="First Name"
+                          required
+                          [(ngModel)]="usuario.firstName"
+                          #firstName="ngModel"
+                          [ngClass]="{'is-invalid': (firstName.errors?.required && firstName.touched) || (f.submitted && firstName.errors?.required), 'is-valid': firstName.valid}">
+                          <small *ngIf="(firstName.errors?.required && firstName.touched) || (f.submitted && firstName.errors?.required)"
+                                class="form-text invalid-feedback text-center">
+                            This field is requred
+                          </small>
+                  </div>
+                  <div class="col-sm-6">
+                    <input
+                          name="lastName"
+                          type="text"
+                          class="form-control form-control-user"
+                          placeholder="Last Name"
+                          required
+                          [(ngModel)]="usuario.lastName"
+                          #lastName="ngModel"
+                          [ngClass]="{'is-invalid': (lastName.errors?.required && lastName.touched) || (f.submitted && lastName.errors?.required), 'is-valid': lastName.valid}">
+                          <small *ngIf="(lastName.errors?.required && lastName.touched) || (f.submitted && lastName.errors?.required)"
+                                class="form-text invalid-feedback text-center">
+                            This field is requred
+                          </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                          name="email"
+                          type="email"
+                          email
+                          class="form-control form-control-user"
+                          placeholder="Email Address"
+                          required
+                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                          [(ngModel)]="usuario.email"
+                          #email="ngModel"
+                          [ngClass]="{'is-invalid': (email.errors?.required && email.touched) || (f.submitted && email.errors?.required) || email.errors?.pattern, 'is-valid': email.valid}">
+                          <small *ngIf="(email.errors?.required && email.touched) || (f.submitted && email.errors?.required)" class="form-text invalid-feedback text-center">This field is requred</small>
+                          <small *ngIf="email.errors?.pattern" class="form-text invalid-feedback text-center">Invalid email</small>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input
+                          name="password"
+                          type="password"
+                          class="form-control form-control-user"
+                          placeholder="Password"
+                          required
+                          minlength="6"
+                          [(ngModel)]="usuario.password"
+                          #password="ngModel"
+                          [ngClass]="{'is-invalid': (password.errors?.required && password.touched) || (f.submitted && password.errors?.required) || password.errors?.minlength, 'is-valid': password.valid}">
+                          <small *ngIf="(password.errors?.required && password.touched) || (f.submitted && password.errors?.required)" class="form-text invalid-feedback text-center">This field is requred</small>
+                          <small *ngIf="password.errors?.minlength" class="form-text invalid-feedback text-center">Need at least {{ password.errors.minlength.requiredLength }} characters.</small>
+                  </div>
+                  <div class="col-sm-6">
+                    <input
+                          name="repeatPassword"
+                          type="password"
+                          required
+                          minlength="6"
+                          class="form-control form-control-user is-invalid"
+                          placeholder="Repeat Password"
+                          [(ngModel)]="usuario.repeatPassword"
+                          #repeatPassword="ngModel"
+                          [ngClass]="{'is-invalid': (repeatPassword.errors?.required && repeatPassword.touched) || (f.submitted && repeatPassword.errors?.required) || repeatPassword.errors?.minlength || (password.value !== repeatPassword.value) && repeatPassword.dirty, 'is-valid': repeatPassword.valid}">
+                          <small *ngIf="(repeatPassword.errors?.required && repeatPassword.touched) || (f.submitted && repeatPassword.errors?.required)" class="form-text invalid-feedback text-center">This field is requred</small>
+                          <small *ngIf="repeatPassword.errors?.minlength" class="form-text invalid-feedback text-center">Need at least {{ repeatPassword.errors.minlength.requiredLength }} characters.</small>
+                          <small *ngIf="(password.value !== repeatPassword.value) && repeatPassword.dirty" class="form-text invalid-feedback text-center">Password does not match</small>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+                <hr>
+                <a href="index.html" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> Register with Google
+                </a>
+                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                </a>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" [routerLink]="['/forgotpassword']">Forgot Password?</a>
+              </div>
+              <div class="text-center">
+                <a class="small" [routerLink]="['/login']">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>

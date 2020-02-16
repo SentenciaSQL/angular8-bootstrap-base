@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
+
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -46,7 +48,9 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

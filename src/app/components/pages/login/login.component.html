@@ -44,7 +44,7 @@
                           minlength="6"
                           id="exampleInputPassword"
                           placeholder="Password"
-                          [ngClass]="{'is-invalid': (password.errors?.required && password.touched) || (f.submitted && password.errors?.required) || password.errors?.minlength, 'is-valid': email.valid}">
+                          [ngClass]="{'is-invalid': (password.errors?.required && password.touched) || (f.submitted && password.errors?.required) || password.errors?.minlength, 'is-valid': password.valid}">
                           <small *ngIf="(password.errors?.required && email.touched) || (f.submitted && password.errors?.required)" class="form-text invalid-feedback text-center">This field is requred</small>
                           <small *ngIf="password.errors?.minlength" class="form-text invalid-feedback text-center">Need at least {{ password.errors.minlength.requiredLength }} characters.</small>
                   </div>
@@ -65,10 +65,10 @@
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  <a class="small" [routerLink]="['/forgotpassword']">Forgot Password?</a>
                 </div>
                 <div class="text-center">
-                  <a class="small" href="register.html">Create an Account!</a>
+                  <a class="small" [routerLink]="['/register']">Create an Account!</a>
                 </div>
               </div>
             </div>
